@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace Model
 {
     /// <summary>
-    /// 
+    /// Содержит информацию о имени, фамилии, возрасте и поле.
     /// </summary>
     public class Person
     {
@@ -29,7 +29,6 @@ namespace Model
         /// Пол
         /// </summary>
         private Gender _gender;
-
         /// <summary>
         /// Свойство Name позволяет получить или установить имя человека.
         /// </summary>
@@ -83,23 +82,14 @@ namespace Model
         /// <summary>
         /// Свойство Gender позволяет получить или установить пол человека.
         /// </summary>
-        public Gender Gender
-        {
-            get { return _gender; }
-            set { _gender = value; }
-        }
+        public Gender Gender { get; set; }
 
-        public Person(string name, string surname, int age)
+        public Person(string Name, string Surname, int Age, Gender Gender)
         {
-            Name = name;
-            Surname = surname;
-            Age = age;
-            Gender = Gender.Male;
-        }
-
-        public Person() : this("Ivan", "Ivanov", 18)
-        {
-
+            _name = Name;
+            _surname = Surname;
+            _age = Age;
+            _gender = Gender;
         }
     }
 }

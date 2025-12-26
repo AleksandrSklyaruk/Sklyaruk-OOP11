@@ -1,0 +1,12 @@
+U:\ООП11\Model\bin\Debug\net7.0\Model.deps.json
+U:\ООП11\Model\bin\Debug\net7.0\Model.dll
+U:\ООП11\Model\bin\Debug\net7.0\Model.pdb
+U:\ООП11\Model\obj\Debug\net7.0\Model.GeneratedMSBuildEditorConfig.editorconfig
+U:\ООП11\Model\obj\Debug\net7.0\Model.AssemblyInfoInputs.cache
+U:\ООП11\Model\obj\Debug\net7.0\Model.AssemblyInfo.cs
+U:\ООП11\Model\obj\Debug\net7.0\Model.csproj.CoreCompileInputs.cache
+U:\ООП11\Model\obj\Debug\net7.0\Model.dll
+U:\ООП11\Model\obj\Debug\net7.0\refint\Model.dll
+U:\ООП11\Model\obj\Debug\net7.0\Model.pdb
+U:\ООП11\Model\obj\Debug\net7.0\ref\Model.dll
+U:\ООП11\Model\obj\Debug\net7.0\Model.csproj.AssemblyReference.cache

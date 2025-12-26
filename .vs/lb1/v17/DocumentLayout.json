@@ -32,22 +32,9 @@
               "RelativeDocumentMoniker": "Model\\PersonList.cs",
               "ToolTip": "U:\\\u041E\u041E\u041F11\\Model\\PersonList.cs",
               "RelativeToolTip": "Model\\PersonList.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T04:03:44.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Gender.cs",
-              "DocumentMoniker": "U:\\\u041E\u041E\u041F11\\Model\\Gender.cs",
-              "RelativeDocumentMoniker": "Model\\Gender.cs",
-              "ToolTip": "U:\\\u041E\u041E\u041F11\\Model\\Gender.cs",
-              "RelativeToolTip": "Model\\Gender.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T03:58:01.904Z",
+              "WhenOpened": "2025-12-26T07:12:37.674Z",
               "EditorCaption": ""
             },
             {
@@ -58,26 +45,21 @@
               "RelativeDocumentMoniker": "Model\\Person.cs",
               "ToolTip": "U:\\\u041E\u041E\u041F11\\Model\\Person.cs",
               "RelativeToolTip": "Model\\Person.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AQIAACIAAAAAAAAAAAA1wFoAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T03:58:04.344Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T13:48:15.634Z"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Gender.cs",
+              "DocumentMoniker": "U:\\\u041E\u041E\u041F11\\Model\\Gender.cs",
+              "RelativeDocumentMoniker": "Model\\Gender.cs",
+              "ToolTip": "U:\\\u041E\u041E\u041F11\\Model\\Gender.cs",
+              "RelativeToolTip": "Model\\Gender.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T13:48:15.636Z"
             }
           ]
         }

@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
-{
-    internal enum Gender
+{ 
+    public enum Gender
     {
+        None,
         Male,
         Female
     }
