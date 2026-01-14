@@ -84,6 +84,13 @@ namespace Model
         /// </summary>
         public Gender Gender { get; set; }
 
+        /// <summary>
+        /// Создаёт человека
+        /// </summary>
+        /// <param name="Name">Имя человека</param>
+        /// <param name="Surname">Фамилия человека</param>
+        /// <param name="Age">Количество лет</param>
+        /// <param name="Gender">Пол человека</param>
         public Person(string Name, string Surname, int Age, Gender Gender)
         {
             _name = Name;

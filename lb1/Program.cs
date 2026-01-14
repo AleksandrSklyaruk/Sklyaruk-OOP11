@@ -4,140 +4,106 @@ using System.Reflection;
 
 namespace lb1
 {
+    /// <summary>
+    /// Класс основной части программы
+    /// </summary>
     class Program
     {
-        // Точка входа в программу. Это первая функция, которая выполняется.
+        /// <summary>
+        /// Создание списков
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //  Создание программно дух списков персон,
-            //  в каждом из которых будет по три человека
-            Console.WriteLine("Шаг a: Создание двух списков по три человека.");
+
             PersonList list1 = new PersonList();
             PersonList list2 = new PersonList();
 
-            // Добавляем трёх людей в каждый список.
-            list1.Add(new Person("Иван", "Иванов", 25, Gender.Male));
-            list1.Add(new Person("Анна", "Петрова", 30, Gender.Female));
-            list1.Add(new Person("Сергей", "Сидоров", 35, Gender.Male));
+            // Добавление трёх людей в каждый список
+            list1.Add(new Person("Александр", "Склярук", 23, Gender.Male));  
+            list1.Add(new Person("Араик", "Шароян", 24, Gender.Male));
+            list1.Add(new Person("Андрей", "Доценко", 23, Gender.Male));
 
-            list2.Add(new Person("Мария", "Кузнецова", 28, Gender.Female));
-            list2.Add(new Person("Дмитрий", "Смирнов", 40, Gender.Male));
-            list2.Add(new Person("Елена", "Васильева", 22, Gender.Female));
+            list2.Add(new Person("Николай", "Казначеев", 25, Gender.Male));
+            list2.Add(new Person("Роман", "Иванов", 30, Gender.Male));
+            list2.Add(new Person("Анастасия", "Петрова", 48, Gender.Female));
+            
+            WaitForKey();
 
-            Console.WriteLine("Списки созданы.");
-            Console.ReadKey(); // Ожидаем нажатия любой клавиши.
+            // Вывод содержимого каждого списка
+            PrintList(list1, "Список 1");
+            PrintList(list2, "Список 2");
+            
+            WaitForKey();
 
-            // b. Выведите содержимое каждого списка на экран с соответствующими подписями списков.
-            Console.WriteLine("\nШаг b: Вывод содержимого списков.");
-            Console.WriteLine("Список 1:");
-            for (int i = 0; i < list1.Count; i++)
-            {
-                Person person = list1.Get(i);
-                Console.WriteLine($" " +
-                    $" {i + 1}. {person.Name} {person.Surname}, " +
-                    $"возраст: {person.Age}, " +
-                    $"пол: {(person.Gender)}");
-            }
-
-            Console.WriteLine("\nСписок 2:");
-            for (int i = 0; i < list2.Count; i++)
-            {
-                Person person = list2.Get(i);
-                Console.WriteLine($"  {i + 1}. {person.Name} {person.Surname}, " +
-                    $"возраст: {person.Age}, " +
-                    $"пол: {(person.Gender)}");
-            }
-
-            Console.ReadKey(); // Ожидаем нажатия любой клавиши.
-
-            // c. Добавьте нового человека в первый список.
-            Console.WriteLine("\nШаг c: Добавление нового человека в первый список.");
-            Person newPerson = new Person("Ольга", "Морозова", 27, Gender.Female);
+            // Добавление нового человека в первый список
+            Person newPerson = new Person("Валерия", "Андреева", 23, Gender.Female);
             list1.Add(newPerson);
-            Console.WriteLine($"Добавлен человек: {newPerson.Name} {newPerson.Surname}");
+            Console.WriteLine("\nПосле добавления нового человека в первый список:");
+            PrintList(list1, "Список 1");
 
-            Console.ReadKey(); // Ожидаем нажатия любой клавиши.
+            WaitForKey();
 
-            // d. Скопируйте второго человека из первого списка в конец второго списка.
-            // Покажите, что один и тот же человек находится в обоих списках.
-            Console.WriteLine("\nШаг d: Копирование второго человека из первого списка во второй.");
-            // Получаем второго человека из первого списка (индекс 1, потому что индексация с 0).
-            Person secondPersonFromList1 = list1.Get(1);
-            list2.Add(secondPersonFromList1); // Добавляем его во второй список.
+            // Копирование второго человека из первого списка во второй список
+            Person personCopy = list1.Get(1);
+            list2.Add(personCopy);
+            Console.WriteLine($"Скопирован человек: " +
+                $"{personCopy.Name} {personCopy.Surname}");
+            PrintList(list1, "Список 1 (после копирования)");
+            PrintList(list2, "Список 2 (после копирования)");
+            WaitForKey();
 
-            Console.WriteLine($"Скопирован человек: {secondPersonFromList1.Name} {secondPersonFromList1.Surname}");
-            Console.WriteLine("Проверка: один и тот же человек находится в обоих списках.");
-
-            Console.WriteLine("Список 1 (после копирования):");
-            for (int i = 0; i < list1.Count; i++)
-            {
-                Person person = list1.Get(i);
-                Console.WriteLine($"  {i + 1}. {person.Name} {person.Surname}," +
-                    $" возраст: {person.Age}," +
-                    $" пол: {(person.Gender)}");
-            }
-
-            Console.WriteLine("\nСписок 2 (после копирования):");
-            for (int i = 0; i < list2.Count; i++)
-            {
-                Person person = list2.Get(i);
-                Console.WriteLine($"  {i + 1}. {person.Name} {person.Surname}," +
-                    $" возраст: {person.Age}," +
-                    $" пол: {(person.Gender)}");
-            }
-
-            Console.ReadKey(); // Ожидаем нажатия любой клавиши.
-
-            // e. Удалите второго человека из первого списка. Покажите, что удаление человека из первого списка не привело к уничтожению этого же человека во втором списке.
-            Console.WriteLine("\nШаг e: Удаление второго человека из первого списка.");
-            list1.RemoveAt(1); // Удаляем элемент с индексом 1 (второй элемент).
+            // Удаление второго человека из первого списка
+            list1.RemoveAt(1);
             Console.WriteLine("Второй человек удален из первого списка.");
+            PrintList(list1, "Список 1 (после удаления)");
+            PrintList(list2, "Список 2 (после удаления из первого списка)");
+            WaitForKey();
 
-            Console.WriteLine("Список 1 (после удаления):");
-            for (int i = 0; i < list1.Count; i++)
-            {
-                Person person = list1.Get(i);
-                Console.WriteLine($"  {i + 1}. {person.Name} {person.Surname}," +
-                    $" возраст: {person.Age}," +
-                    $" пол: {(person.Gender)}");
-            }
-
-            Console.WriteLine("\nСписок 2 (после удаления из первого списка):");
-            for (int i = 0; i < list2.Count; i++)
-            {
-                Person person = list2.Get(i);
-                Console.WriteLine($"  {i + 1}. {person.Name} {person.Surname}," +
-                    $" возраст: {person.Age}," +
-                    $" пол: {(person.Gender)}");
-            }
-
-            Console.ReadKey(); // Ожидаем нажатия любой клавиши.
-
-            // f. Очистите второй список.
-            Console.WriteLine("\nШаг f: Очистка второго списка.");
+            // Отчистка второго списка
             list2.Clear();
             Console.WriteLine("Второй список очищен.");
+            PrintList(list2, "Список 2 (после очистки)");
+            WaitForKey();
 
-            Console.WriteLine("Список 2 (после очистки):");
-            if (list2.Count == 0)
+        }
+
+        /// <summary>
+        /// Метод для вывода списка людей на экран.
+        /// </summary>
+        /// <param name="list">Список для вывода.</param>
+        /// <param name="listName">Название списка (заголовок).</param>
+        private static void PrintList(PersonList list, string listName)
+        {
+            Console.WriteLine($"\n{listName}:");
+            for (int i = 0; i < list.Count; i++)
             {
-                Console.WriteLine("  Список пуст.");
+                Person person = list.Get(i);
+                Console.Write($"  {i + 1}. ");
+                PrintPerson(person);
             }
-            else
-            {
-                for (int i = 0; i < list2.Count; i++)
-                {
-                    Person person = list2.Get(i);
-                    Console.WriteLine($"  {i + 1}. {person.Name} {person.Surname}," +
-                        $" возраст: {person.Age}," +
-                        $" пол: {(person.Gender)}");
-                }
-            }
+        }
 
-            Console.ReadKey(); // Ожидаем нажатия любой клавиши.
+        /// <summary>
+        /// Метод для вывода информации об одном человеке.
+        /// </summary>
+        /// <param name="person">Объект Person для вывода.</param>
+        private static void PrintPerson(Person person)
+        {
+            string genderStr = person.Gender 
+                == Gender.Male ? "Мужской" : "Женский";
+            Console.WriteLine($"{person.Name} {person.Surname}," +
+                $" возраст: {person.Age}, пол: {genderStr}");
+        }
 
-            Console.WriteLine("\nПрограмма завершена.");
-            Console.ReadLine();
+        /// <summary>
+        /// Метод для паузы между пунктами программы.
+        /// Ожидает нажатия любой клавиши.
+        /// </summary>
+        private static void WaitForKey()
+        {
+            Console.WriteLine("\nНажмите любую клавишу, чтобы продолжить...");
+            Console.ReadKey();
         }
     }
 }

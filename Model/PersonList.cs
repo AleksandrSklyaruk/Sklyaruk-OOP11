@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    /// <summary>
+    /// Класс списка с людьми
+    /// </summary>
     public class PersonList
     {
         private List<Person> _persons = new List<Person>();
 
         /// <summary>
-        /// Добавляет нового человека в список
+        /// Добавить нового человека в список
         /// </summary>
         public void Add(Person person)
         {
@@ -19,7 +22,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Удаляет указанного человека из списка
+        /// Удалить указанного человека из списка
         /// </summary>
         public void Remove(Person person)
         {
@@ -27,7 +30,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Удаляет человека из списка по его индексу
+        /// Удалить человека из списка по его индексу
         /// </summary>
         public void RemoveAt(int index)
         {
@@ -35,7 +38,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Возвращает человека из списка по его индексу
+        /// Вернуть человека из списка по его индексу
         /// </summary>
         public Person Get(int index)
         {
@@ -43,8 +46,8 @@ namespace Model
         }
 
         /// <summary>
-        /// Возвращает индекс указанного человека в списке
-        /// Если человек не найден, возвращает -1
+        /// Вернуть индекс указанного человека в списке
+        /// Если человек не найден, вернуть -1
         /// </summary>
         public int IndexOf(Person person)
         {
@@ -52,7 +55,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Очищает список, удаляя всех людей
+        /// Очистить список, удалив всех людей
         /// </summary>
         public void Clear()
         {
@@ -60,7 +63,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Возвращает количество людей в списке
+        /// Вернуть количество людей в списке
         /// </summary>
         public int Count
         {

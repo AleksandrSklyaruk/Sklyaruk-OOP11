@@ -8,8 +8,13 @@ namespace Model
 { 
     public enum Gender
     {
-        None,
+        /// <summary>
+        /// Пол человека: мужчина
+        /// </summary>
         Male,
+        /// <summary>
+        /// Пол человека: женщина
+        /// </summary>
         Female
     }
 }
