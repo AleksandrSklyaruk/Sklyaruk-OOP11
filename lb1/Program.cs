@@ -27,13 +27,11 @@ namespace lb1
             list2.Add(new Person("Николай", "Казначеев", 25, Gender.Male));
             list2.Add(new Person("Роман", "Иванов", 30, Gender.Male));
             list2.Add(new Person("Анастасия", "Петрова", 48, Gender.Female));
-            
             WaitForKey();
 
             // Вывод содержимого каждого списка
             PrintList(list1, "Список 1");
             PrintList(list2, "Список 2");
-            
             WaitForKey();
 
             // Добавление нового человека в первый список
@@ -41,7 +39,6 @@ namespace lb1
             list1.Add(newPerson);
             Console.WriteLine("\nПосле добавления нового человека в первый список:");
             PrintList(list1, "Список 1");
-
             WaitForKey();
 
             // Копирование второго человека из первого списка во второй список
@@ -66,28 +63,34 @@ namespace lb1
             PrintList(list2, "Список 2 (после очистки)");
             WaitForKey();
 
+            // Ввод, добавление в список, вывод
+            Console.WriteLine("\nДобавим человека вручную в Список 1:");
+            Person personFromConsole = ReadFromConsole();
+            list1.Add(personFromConsole);
+            Console.WriteLine("\nВ Список 1 добавлен человек:");
+            PrintPerson(personFromConsole);
+            PrintList(list1, "Список 1 после добавления");
+            WaitForKey();
         }
 
         /// <summary>
-        /// Метод для вывода списка людей на экран.
+        /// Метод для вывода списка людей на консоль с указанным заголовком
         /// </summary>
-        /// <param name="list">Список для вывода.</param>
-        /// <param name="listName">Название списка (заголовок).</param>
+        /// <param name="list">Список для вывода</param>
+        /// <param name="listName">Заголовок списка</param>
         private static void PrintList(PersonList list, string listName)
         {
             Console.WriteLine($"\n{listName}:");
             for (int i = 0; i < list.Count; i++)
             {
-                Person person = list.Get(i);
-                Console.Write($"  {i + 1}. ");
-                PrintPerson(person);
+                PrintPerson(list.Get(i));
             }
         }
 
         /// <summary>
-        /// Метод для вывода информации об одном человеке.
+        /// Метод для вывода информации об одном человеке
         /// </summary>
-        /// <param name="person">Объект Person для вывода.</param>
+        /// <param name="person">Объект Person для вывода</param>
         private static void PrintPerson(Person person)
         {
             string genderStr = person.Gender 
@@ -97,13 +100,34 @@ namespace lb1
         }
 
         /// <summary>
-        /// Метод для паузы между пунктами программы.
-        /// Ожидает нажатия любой клавиши.
+        /// Метод для паузы между пунктами программы
         /// </summary>
         private static void WaitForKey()
         {
             Console.WriteLine("\nНажмите любую клавишу, чтобы продолжить...");
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Считывает данные о человеке с консоли
+        /// </summary>
+        /// <returns>Новый экземпляр класса <see cref="Person"/>.</returns>
+        private static Person ReadFromConsole()
+        {
+            Console.Write("Имя: ");
+            string name = Console.ReadLine()!;
+
+            Console.Write("Фамилия: ");
+            string surname = Console.ReadLine()!;
+
+            Console.Write("Возраст: ");
+            int age = int.Parse(Console.ReadLine()!);
+
+            Console.Write("Пол (0 = мужской, 1 = женский): ");
+            int genderInput = int.Parse(Console.ReadLine()!);
+            Gender gender = (Gender)genderInput;
+
+            return new Person(name, surname, age, gender);
         }
     }
 }

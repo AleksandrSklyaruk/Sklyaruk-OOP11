@@ -82,7 +82,11 @@ namespace Model
         /// <summary>
         /// Свойство Gender позволяет получить или установить пол человека.
         /// </summary>
-        public Gender Gender { get; set; }
+        public Gender Gender
+        {
+            get { return _gender; }
+            set { _gender = value; }
+        }
 
         /// <summary>
         /// Создаёт человека
