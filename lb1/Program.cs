@@ -73,7 +73,7 @@ namespace lb1
             WaitForKey();
 
             // Создание случайного человека
-            Person randomPerson = GetRandomPerson(); // Вызываем метод из Program
+            Person randomPerson = RandomPerson.GetRandomPerson(); // Вызываем метод из Program
             Console.WriteLine("\nСоздан случайный человек:");
             PrintPerson(randomPerson);
             WaitForKey();
@@ -115,62 +115,102 @@ namespace lb1
         }
 
         /// <summary>
-        /// Считывает данные о человеке с консоли
+        /// Ввод пользователя с консоли.
         /// </summary>
-        /// <returns>Новый экземпляр класса <see cref="Person"/>.</returns>
-        private static Person ReadFromConsole()
+        /// <returns>возвращает объект класса Person</returns>
+        /// <exception cref="Exception">создание при неверном вводе</exception>
+        public static Person ReadFromConsole()
         {
-            Console.Write("Имя: ");
-            string name = Console.ReadLine()!;
+            var person = new Person();
 
-            Console.Write("Фамилия: ");
-            string surname = Console.ReadLine()!;
+            var actionDictionary = new Dictionary<string, Action>()
+        {
+            {
+                "имя",
+                new Action(() =>
+                {
+                    person.Name = Console.ReadLine();
+                })
+            },
+            {
+                 "фамилию",
+                 new Action(() =>
+                 {
+                     person.Surname = Console.ReadLine();
+                 })
+            },
+            {
+                 "возраст",
+                 new Action(() =>
+                 {
+                     if (int.TryParse(Console.ReadLine(), out int age))
+                     {
+                         person.Age = age;
+                     }
+                     else
+                     {
+                         throw new Exception("Введённая строка " +
+                             "не может быть преобразована в число");
+                     }
+                 })
+            },
+            {
+                 "пол (1 — Мужчина, 2 — Женщина)",
+                  new Action(() =>
+                  {
+                      string input = Console.ReadLine();
+                      switch (input)
+                      {
+                          case "1":
+                          {
+                              person.Gender = Gender.Male;
+                              break;
+                          }
+                          case "2":
+                          {
+                              person.Gender = Gender.Female;
+                              break;
+                          }
+                          default:
+                          {
+                              throw new Exception("Некорректный ввод" +
+                                  " Введите 1 или 2.");
+                          }
 
-            Console.Write("Возраст: ");
-            int age = int.Parse(Console.ReadLine()!);
+                      }
+                  })
+            }
+        };
 
-            Console.Write("Пол (0 = мужской, 1 = женский): ");
-            int genderInput = int.Parse(Console.ReadLine()!);
-            Gender gender = (Gender)genderInput;
+            foreach (var actionHandler in actionDictionary)
+            {
+                ActionHandler(actionHandler.Value, actionHandler.Key);
+            }
 
-            return new Person(name, surname, age, gender);
+            return person;
         }
 
         /// <summary>
-        /// Создаёт и возвращает новый экземпляр класса Person с случайными данными.
+        /// При возникновении исключения выводит сообщение и повторяет ввод.
         /// </summary>
-        /// <returns>Новый объект Person.</returns>
-        public static Person GetRandomPerson()
+        /// <param name="action">Действие, ввод и присваивание</param>
+        /// <param name="fieldName">Название поля</param>
+        private static void ActionHandler(Action action, string fieldName)
         {
-            Random random = new Random();
-
-            string[] maleNames = { "Александр", "Дмитрий", "Иван", "Сергей", 
-                                   "Андрей", "Максим", "Егор", "Артём" };
-            string[] femaleNames = { "Ангелина", "Елена", "Мария", "Татьяна", 
-                                     "Наталья", "Ольга", "Дарья", "Полина" };
-
-            string[] surnamesMale = { "Склярук", "Смирнов", "Кузнецов", 
-                                      "Попов", "Волков", "Соколов", 
-                                      "Лебедев", "Морозов" };
-            string[] surnamesFemale = { "Савосто", "Смирнова", "Кузнецова", 
-                                        "Попова", "Волкова", "Соколова", 
-                                        "Лебедева", "Морозова" };
-
-            var gender = random.Next(2) == 0 
-                ? Gender.Male
-                : Gender.Female;
-
-            int age = random.Next(0, 124);
-
-            string name = gender == Gender.Male
-                ? maleNames[random.Next(maleNames.Length)]
-                : femaleNames[random.Next(femaleNames.Length)];
-
-            string surname = gender == Gender.Male
-                ? surnamesMale[random.Next(surnamesMale.Length)]
-                : surnamesFemale[random.Next(surnamesFemale.Length)];
-
-            return new Person(name, surname, age, gender);
+            while (true)
+            {
+                try
+                {
+                    Console.Write($"Введите {fieldName}: ");
+                    action.Invoke();
+                    return;
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine($" Ошибка: {exception.Message}" +
+                        $" Попробуйте снова.");
+                }
+            }
         }
     }
 }

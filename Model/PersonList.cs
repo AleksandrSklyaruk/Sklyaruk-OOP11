@@ -11,7 +11,18 @@ namespace Model
     /// </summary>
     public class PersonList
     {
-        private List<Person> _persons = new List<Person>();
+        /// <summary>
+        /// Инициализирует новый экземпляр класса с пустым списком
+        /// </summary>
+        private List<Person> _persons;
+
+        /// <summary>
+        /// Конструктор класса по умолчанию
+        /// </summary>
+        public PersonList()
+        {
+            _persons = new List<Person>();
+        }
 
         /// <summary>
         /// Добавить нового человека в список
