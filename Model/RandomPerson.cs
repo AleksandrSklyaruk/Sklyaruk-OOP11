@@ -35,6 +35,7 @@ namespace Model
                 ? Gender.Male
                 : Gender.Female;
 
+            //TODO: duplication
             int age = random.Next(0, 124);
 
             string name = gender == Gender.Male

@@ -19,14 +19,17 @@ namespace Model
         /// Имя
         /// </summary>
         private string _name;
+
         /// <summary>
         /// Фамилия
         /// </summary>
         private string _surname;
+
         /// <summary>
         /// Возраст
         /// </summary>
         private int _age;
+
         /// <summary>
         /// Пол
         /// </summary>
@@ -132,6 +135,7 @@ namespace Model
         /// <exception cref="ArgumentException">при неверном вводе</exception>
         private static string Validate(string value, string fieldName)
         {
+            //TODO: {}
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentException(
                     $"{fieldName} не может быть пустым " +

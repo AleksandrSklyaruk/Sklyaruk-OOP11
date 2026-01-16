@@ -4,11 +4,13 @@ using System.Reflection;
 
 namespace lb1
 {
+    //TODO: RSDN
     /// <summary>
     /// Класс основной части программы
     /// </summary>
     class Program
     {
+        //TODO: RSDN
         /// <summary>
         /// Создание списков
         /// </summary>
@@ -123,6 +125,7 @@ namespace lb1
         {
             var person = new Person();
 
+            //TODO: tab
             var actionDictionary = new Dictionary<string, Action>()
         {
             {
