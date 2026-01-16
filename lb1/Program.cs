@@ -12,7 +12,7 @@ namespace lb1
         /// <summary>
         /// Создание списков
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">аргумент</param>
         static void Main(string[] args)
         {
 
@@ -73,7 +73,7 @@ namespace lb1
             WaitForKey();
 
             // Создание случайного человека
-            Person randomPerson = RandomPerson.GetRandomPerson(); // Вызываем метод из Program
+            Person randomPerson = RandomPerson.GetRandomPerson();
             Console.WriteLine("\nСоздан случайный человек:");
             PrintPerson(randomPerson);
             WaitForKey();

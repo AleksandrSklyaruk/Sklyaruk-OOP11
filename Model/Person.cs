@@ -11,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace Model
 {
     /// <summary>
-    /// Содержит информацию о имени, фамилии, возрасте и поле.
+    /// Хранение и обработка данных о человеке
     /// </summary>
     public class Person
     {
@@ -31,6 +31,21 @@ namespace Model
         /// Пол
         /// </summary>
         private Gender _gender;
+
+        /// <summary>
+        /// Создаёт человека
+        /// </summary>
+        /// <param name="Name">Имя человека</param>
+        /// <param name="Surname">Фамилия человека</param>
+        /// <param name="Age">Количество лет</param>
+        /// <param name="Gender">Пол человека</param>
+        public Person(string name, string surname, int age, Gender gender)
+        {
+            Name = name;
+            Surname = surname;
+            Age = age;
+            Gender = gender;
+        }
 
         /// <summary>
         /// Получение и валидация имени.
@@ -154,21 +169,6 @@ namespace Model
                     $"Язык имени и фамилии не совпадает. " +
                     "Имя и фамилия должны быть на одном языке.");
             }
-        }
-
-        /// <summary>
-        /// Создаёт человека
-        /// </summary>
-        /// <param name="Name">Имя человека</param>
-        /// <param name="Surname">Фамилия человека</param>
-        /// <param name="Age">Количество лет</param>
-        /// <param name="Gender">Пол человека</param>
-        public Person(string name, string surname, int age, Gender gender)
-        {
-            Name = name;
-            Surname = surname;
-            Age = age;
-            Gender = gender;
         }
 
         /// <summary>

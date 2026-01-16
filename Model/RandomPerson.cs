@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    /// <summary>
+    /// Класс случайного человек
+    /// </summary>
     public class RandomPerson
     {
         /// <summary>
